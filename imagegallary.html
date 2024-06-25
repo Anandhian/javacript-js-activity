@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imagegallary</title>
+</head>
+<style>
+    .container{
+        margin: 10px;
+        text-align: center;
+        border: solid black 1px;
+
+    }
+    .image-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 10px;
+    }
+    .image-container img{
+        margin: 10px;
+        flex-grow: 1;
+        flex-basis: 10%;
+        width: 200px;
+    }
+    .lay{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0, 0.8);
+        backdrop-filter: blur(5px);
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        display: none;   
+
+    }
+    .popup-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .lay img{
+        height: 600px;
+        width: 400px;
+    }
+    .lay p{
+        position: absolute;
+        top: 20px;
+        right:35px ;
+        color: white;
+        font-size: larger;
+        cursor: pointer;
+    }
+
+
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>Image Gallary</h1>
+        <div class="image-container">
+            
+            <img src="https://picsum.photos/id/1/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/2/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/3/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/4/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/5/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/6/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/7/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/8/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/9/200/300" alt="altimage">
+            <img src="https://picsum.photos/id/10/200/300" alt="altimage">
+            
+            
+            
+
+
+        </div>
+
+
+    </div>
+    <div class="lay" id="lay">
+        <div class="popup-container">
+            <p id="close">X</p>
+            <img class="popupimage" id="popup-image">
+
+        </div>
+    </div>
+    <script>
+        var img=document.querySelectorAll("img")
+        var lay=document.getElementById("lay")
+        var popupimage=document.getElementById("popup-image")
+        img.forEach(image=>{
+            image.addEventListener("click",function(){
+                lay.style.display="block";
+
+                popupimage.src=image.src
+            })
+
+        })
+        var close =document.getElementById("close")
+        close.addEventListener("click",function(){
+            lay.style.display="none";
+        })
+
+    </script>
+    
+</body>
+</html>

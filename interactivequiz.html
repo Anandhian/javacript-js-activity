@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intractive quiz</title>
+</head>
+<style>
+    body{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        gap: 20px;
+        
+    }
+    .conatiner-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        font-style: italic;
+        flex-wrap: wrap;
+        font-size: larger;
+        width: 700px;
+        height: 1000px;
+        box-shadow: rgba(0,0,0,35) 0px 5px 15px;
+        
+            gap: 10px;
+    }
+    h1{
+        
+        
+    }
+    p{
+        font-size: x-large;
+    }
+    .container-2{
+        box-shadow: rgba(0,0,0,35) 0px 5px 15px;
+        padding: 10px;
+
+
+    }
+    button{
+        background-color: green;
+        padding: 10px;
+        border: solid green 1px;
+
+    }
+
+    
+</style>
+<body>
+  
+    <div class="conatiner-1 " id="conatiner-1">
+        <h1 style="text-align: center;">Interative Quiz</h1>
+       
+        <p>1.What is the capital of india</p>
+        <div class="option-container">
+            <div class="option">
+                <input type="radio" name="option1" value="Delhi">
+                <label>Delhi</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option1" value="tamilnadu">
+                <label>Tamilnadu</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option1" value="chennai">
+                <label>chennai</label>
+            </div>
+        </div>
+        <p>2.who is the prime minister of india</p>
+        <div class="option-container">
+            <div class="option">
+                <input type="radio" name="option2" value="Anandhi">
+                <label>Anandhi</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option2" value="Narendra Modi">
+                <label>Narendra Modi</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option2" value="Guna">
+                <label>Guna</label>
+            </div>
+        </div>
+        <p>3.who heads the RBI?</p>
+        <div class="option-container">
+            <div class="option">
+                <input type="radio" name="option3" value="State Bank Of India">
+                <label>State Bank Of India</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option3" value="India Overse Bank of india">
+                <label>India Overse Bank of india</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option3" value="Reserve Bank of india">
+                <label>Reserve Bank of india</label>
+            </div>
+        </div>
+        <p>4.who created Bitcoin</p>
+        <div class="option-container">
+            <div class="option">
+                <input type="radio" name="option4" value="Satoshi Nakmoto">
+                <label>Satoshi Nakmoto</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option4" value="Alina">
+                <label>Alina</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option4" value="Sundhar JI">
+                <label>Sundhar ji</label>
+            </div>
+        </div>
+        <p>5.What is the currency of india</p>
+        <div class="option-container">
+            <div class="option">
+                <input type="radio" name="option5" value="Indian  Rupee(Ir) ">
+                <label>Indian  Rupee(Ir) </label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option5" value="Indian SS(IS)">
+                <label>Indian SS(IS)</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option5" value="Indian Rupee(INR)">
+                <label>Indian Rupee (INR)</label>
+            </div>
+        </div>
+        <button id="Submit">Submit</button>
+
+    </div>
+
+    <div class="container-2" id="container-2">
+        <h1>Interative Quiz</h1>
+        <h2>your quiz result</h2>
+        <p id="result">score:0</p>
+
+    </div>
+    <script>
+        document.getElementById('Submit').addEventListener('click',function(event){
+            event.preventDefault();
+            CalculateScore();
+        })
+        function  CalculateScore(){
+            var correctanswer={
+                option1:"Delhi",
+                option2:"Narendra Modi",
+                option3: "Reserve Bank of india",
+                option4:"Satoshi Nakmoto",
+                option5:"Indian Rupee(INR)"
+
+            }
+
+            var score=0
+            var Answer=true
+            for(var option in correctanswer){
+                var radio=document.getElementsByName(option)
+                var select=null
+                for(var i=0; i<radio.length; i++){
+                    if(radio[i].checked){
+                        select=radio[i]
+                        break;
+                        
+                    }
+                    
+
+                }
+                if(!select){
+                    Answer=false;
+                    break;
+                    
+                    
+                }
+                else if(select.value === correctanswer[option]){
+                    score++;
+                }
+            }
+            if(!Answer){
+                alert('plese answer all qusetion')
+                return;
+            }
+
+
+document.getElementById("result").innerText = `score:${score}/5`;
+
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

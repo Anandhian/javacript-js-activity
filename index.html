@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>captcha gentretor</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box-1">
+            <h2 id="captcha"></h2>
+
+        </div>
+        <div class="box-2">
+            <input id="inputext" type="text" placeholder="enter captcha">
+            <button id="verify">verify</button>
+
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+
+<script>
+
+
+var captcha=document.getElementById("captcha")
+var input =document.getElementById("inputext")
+var verify=document.getElementById("verify")
+verify.addEventListener("click",function(){
+    if(captcha.textContent==input.value){
+        alert("captcha verifed successfully")
+    }
+    else{
+        alert("captcha verification is failed")
+    }
+})
+
+
+function captchagenrator(){
+    var charaarray="aesfjlknbfdsertiop;lkjhgbfvnml;poiutrewhgjklpoliutrewsdfghiop;lkjhgfghj"
+    var length=6
+    var GENRATOR=[];
+    for (var i=0; i<length; i++){
+        var value=Math.floor(Math.random()*charaarray.length)
+        GENRATOR.push(charaarray[value])
+        
+    }
+
+    captchaText=GENRATOR.join("")
+    captcha.textContent=captchaText
+}
+
+window.onload=function(){
+    captchagenrator()
+
+}
+
+
+
+
+
+
+
+
+</script>
